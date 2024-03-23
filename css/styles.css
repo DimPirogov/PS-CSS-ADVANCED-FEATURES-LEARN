@@ -1,5 +1,5 @@
 html {
-
+  height: 100%;
 }
 
 body {
@@ -7,7 +7,20 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin-left: auto;
   margin-right: auto;
-  background-color: #e5e5e5;
+  background: linear-gradient(to top right, rgba(200, 125, 82, 0.5) -30%, rgba(229, 229, 229, 0.5)),
+    linear-gradient(to top left, rgba(200, 125, 82, 0.5) -30%, rgba(229, 229, 229, 0.5));
+  height: 100%;
+  background-attachment: fixed;
+}
+
+p {
+  text-align: justify;
+}
+
+h2 {
+  text-align: center;
+  padding-top: 20px;
+  text-shadow: 4px 3px 4px #c87d52;
 }
 
 h5 {
@@ -18,6 +31,11 @@ h5 {
   background-color: #c87d52;
   display: flex;
   justify-content: center;
+  box-shadow: 0px 3px 15px;
+}
+
+img {
+  border-radius: 1%;
 }
 
 /************
@@ -57,16 +75,26 @@ article aside ul li {
   background: #c87d52;
   color: white;
   padding: 10px;
-      
+
 }
 
 article aside ul li:hover {
+  background: white;
+  color: #529DC8;
+  transition-duration: 0.5s;
 }
 
-article aside ul li:hover .count{  
+article aside ul li:hover .count{
+  opacity: 1;
+  font-weight: bold;
+  transition-duration: 2s, 5s;
+  transition-property:  opacity, padding-right;
+  transition-delay: 0s, 2s;
+  padding-right: 0%;
 }
 article aside ul li .count {
   opacity: 0%;
+  padding-right: 60%;
 }
 article aside ul li a {
   text-decoration: none;
@@ -90,6 +118,7 @@ button {
   color: white;
   font-size: 1rem;
   padding: 10px;
+  border-radius: 5px;
 }
 
 /************
@@ -107,7 +136,7 @@ nav button {
   background: #c87d52;
   border: 1px solid #FFFFFF;
   font-weight: bold ;
-  
+  border-radius: 50%;
 }
 
 nav > ul {
@@ -139,6 +168,13 @@ nav > ul > li a {
   margin: 0 auto;
 }
 
+nav > ul > li a:hover {
+  background: #529DC8 ;
+  font-size: 18px;
+  transition-duration: 3s;
+  transition: ease;
+}
+
 nav input {
   box-sizing: border-box;
   -webkit-appearance: none;
@@ -146,6 +182,7 @@ nav input {
   padding: 14px 12px 12px 12px;
   width: 200px;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 #main {
@@ -160,6 +197,46 @@ nav input {
   width: 72.03px;
   /* top: -84px; */
   margin-bottom: -44px;
+  /* transition: transform 1s, opacity 5s 1s; */
+  transition: transform 1s;
+}
+
+.logo-mark.load {
+  transform: translateY(-300px) scale(4);
+  /* opacity: 0.2; */
+  /* animation: 1s spin 1s 1.25 forwards linear; */
+  animation-name: spin, fade;
+  animation-duration: 3s, 2s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  /* animation-fill-mode: none; */
+  animation-timing-function: linear, ease;
+}
+
+@keyframes spin {
+  from {
+    transform: translateY(-300px) scale(4) rotate(0deg);
+  }
+  to{
+    transform: translateY(-300px) scale(4) rotate(360deg);
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  35% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .text-center {
@@ -196,6 +273,8 @@ div.card {
   margin-bottom: 50px;
   flex-basis: 30%;
   width: 100%;
+  box-shadow: 5px 5px 15px;
+  perspective: 1000px;
 }
 
 div.card-inner {
@@ -204,6 +283,12 @@ div.card-inner {
   height: 100%;
   text-align: center;
   transform-style: preserve-3d;
+  border-radius: 1%;
+  transition: transform 1s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
 }
 
 div.card-front,
@@ -211,6 +296,7 @@ div.card-back {
   position: absolute;
   width: 100%;
   height: 100%;
+  backface-visibility: hidden;
 }
 
 div.card-front {
@@ -220,19 +306,22 @@ div.card-front {
 div.card-back {
   background-color: #529DC8;
   color: white;
+  transform: rotateY(180deg);
 }
 
 div.card.active {
   box-shadow: 5px 5px 15px  #529DC8;
+  transition-duration: 0.75s;
 }
 
 div.card h2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
-  color: #c87d52;
+  color: black;
   display: flex;
   justify-content: center;
+  text-transform: capitalize;
 }
 
 div.card h3 {
@@ -249,6 +338,7 @@ div.card a {
 
 div.card img {
   width: 100%;
+  border-radius: 10% 10% 10% 50%;
 }
 
 div.card .image {
